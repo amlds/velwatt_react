@@ -1,9 +1,11 @@
 import React from "react";
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { SerialPort } from 'serialport'
 
 
-function date() {
+function data() {
+  const serialport = new SerialPort({ path: '/dev/example', baudRate: 9600 })
 
 }
 
