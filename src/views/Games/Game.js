@@ -1,10 +1,13 @@
 import React from "react";
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { SerialPort } from 'serialport'
 
-
-function date() {
-
+function usbdata() {
+  const port = new SerialPort('COM5', { baudRate: 9600 })
+  port.on('data', function (data) {
+    console.log('Data:', data)
+  })
 }
 
 function map() {
@@ -95,6 +98,7 @@ function map() {
 function Game(params) {
   return (
     <div className="game">
+      { usbdata() }
       { map() }
     </div>
   );
