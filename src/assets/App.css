@@ -28,6 +28,14 @@
   color: #61dafb;
 }
 
+.visuData {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: white;
+  color: black;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
