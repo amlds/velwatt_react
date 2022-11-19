@@ -1,10 +1,7 @@
-import React from 'react'
-import Tree from '../../components/Tree'
-//import Compteur from '../../components/Compteur'
-
+import React from "react";
 import io from "socket.io-client"
 
-class Game extends React.Component {
+class Compteur extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,14 +25,11 @@ class Game extends React.Component {
 
   render() {
     return (
-      <div className="Game">
-        {/* <MapGame serial={this.state.serial} /> */}
-        <Tree />
-        { console.log(this.state) }
-        { console.log("Game:"+this.state.serial) }
+      <div className="Compteur">
+        {this.state.serial}
       </div>
     );
   }
 }
 
-export default Game;
+export default Compteur;
