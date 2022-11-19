@@ -1,10 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import Service from '../services/serial.js'
-//import io from "socket.io-client"
-
-
 
 function map(serial) {
   const scene = new THREE.Scene();
@@ -75,41 +71,24 @@ function map(serial) {
       if (node.isMesh)
       node.castShadow = true
     })
-
     scene.add( tree );
     tree.rotation.y = Math.PI / 2;
-
-    function animate() {
-      requestAnimationFrame( animate );
-      let compteur = document.querySelector(".compteur").innerText / 20000;
-
-      tree.rotation.z += (compteur);
-      renderer.render( scene, camera );
-    };
-
     renderer.render( scene, camera );
-    animate();
 
   }, undefined, function ( error ) {
     console.log( 'An error happened' );
   });
 }
 
-function MapGame(params) {
 
-  const [serial, setSerial] = useState();
-
-  const updateSerial = (data) => {
-    setSerial(data);
-  }
-
+function Test(props) {
   return (
-    <div className="MapGame">
-      {serial}
-      { map(serial) }
-      <Service todo={updateSerial} />
+    <div>
+      {
+        map()
+      }
     </div>
   );
 }
 
-export default MapGame;
+export default Test;
