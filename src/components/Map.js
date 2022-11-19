@@ -1,8 +1,8 @@
-import React from "react";
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-function map(serial) {
+
+function Map(serial) {
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x87CEEB);
   const camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
@@ -66,29 +66,25 @@ function map(serial) {
   loader.load('./models3D/planetTree.glb', function ( gltf ) {
 
     const tree = gltf.scene;
-
     tree.traverse(function (node) {
       if (node.isMesh)
       node.castShadow = true
     })
     scene.add( tree );
     tree.rotation.y = Math.PI / 2;
-    renderer.render( scene, camera );
 
+    function animate() {
+      requestAnimationFrame( animate );
+      let compteur = document.querySelector(".compteur").innerText / 20000;
+      tree.rotation.z += (compteur);
+      renderer.render( scene, camera );
+    };
+
+    renderer.render( scene, camera );
+    animate();
   }, undefined, function ( error ) {
     console.log( 'An error happened' );
   });
 }
 
-
-function Test(props) {
-  return (
-    <div>
-      {
-        map()
-      }
-    </div>
-  );
-}
-
-export default Test;
+export default Map;
